@@ -1,0 +1,225 @@
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li,
+a {
+  list-style: none;
+}
+
+html {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8f9fa;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+input {
+  border: none;
+  background: none;
+  outline: none;
+}
+
+label {
+  line-height: 1;
+}
+
+/* 文本单行隐藏 */
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.todos {
+  width: 400px;
+  padding: 20px;
+
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 6px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+/*
+  heading
+*/
+
+.todos__heading > h3 {
+  font-size: 24px;
+}
+
+/*
+  add 输入框
+*/
+
+.todos__add {
+  display: flex;
+  margin: 20px 0;
+  background-color: #f1f3f5;
+  border-radius: 20px;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.todos__add > input {
+  flex: auto;
+  padding: 0 20px;
+  font-size: 16px;
+  border-radius: 20px 0 0 20px;
+}
+
+.todos__add > button {
+  width: 100px;
+  padding: 6px 12px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #339af0;
+  border-radius: 20px;
+}
+
+/*
+  filter 过滤菜单
+*/
+
+.todos__filter {
+  display: flex;
+  width: 60%;
+  margin-bottom: 20px;
+  background-color: #f1f3f5;
+  border-radius: 20px;
+}
+
+.todos__filter > button {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  color: #495057;
+  border-radius: 20px;
+}
+
+.todos__filter-btn--active {
+  color: #fff !important;
+  background-color: #4dabf7;
+}
+
+/*
+  todoList 任务列表
+*/
+
+.todos__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.todos__list-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.todos__list-item > span {
+  flex: 1;
+}
+
+/* 
+  自定义复选框
+  1. 把默认复选框隐藏
+  2. 添加一个元素在label里
+  3. 在元素里设置一个伪元素展示图标
+  4. 使用伪类的特性跟紧邻兄弟选择器实现复选更改显示
+*/
+
+.checkbox {
+  display: none;
+}
+
+.checkbox-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 100%;
+  position: relative;
+  margin-right: 10px;
+  transition: all 0.2s ease;
+}
+
+.checkbox:checked + .checkbox-icon {
+  background: #4dabf7;
+}
+
+.checkbox:checked + .checkbox-icon::before {
+  content: '✔';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.todos__list-item > span {
+  transition: all 0.5s ease-in;
+}
+
+.todos__list-item > span.checked {
+  text-decoration: line-through;
+  color: #ced4da;
+}
+
+.todos__list-item > button {
+  padding: 6px;
+  color: #fff;
+  background-color: #f03e3e;
+}
+
+.todos__list-item > button:hover {
+  color: #000;
+}
+
+/************
+分页
+*************/
+.todos__pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: 20px;
+}
+
+.todos__pagination-btn:hover,
+.todos__pagination-btn:active {
+  color: #4dabf7;
+}
+
+.todos__pagination-btn--disable {
+  color: #ced4da;
+  pointer-events: none;
+}
+
+.todos__pagination-number > span {
+  font-weight: 600;
+}
+
+.todos__pagination-number > span:first-child {
+  color: #4dabf7;
+}
